@@ -23,3 +23,15 @@ Data/Test set/ebnerd_testset/.DS_Store
 Data/Test set/ebnerd_testset/articles.parquet
 Data/Test set/ebnerd_testset/test/behaviors.parquet
 Data/Test set/ebnerd_testset/test/history.parquet
+Data/Small/articles.parquet
+Data/Small/__MACOSX/._articles.parquet
+Data/Small/__MACOSX/._train
+Data/Small/__MACOSX/._validation
+Data/Small/__MACOSX/train/._behaviors.parquet
+Data/Small/__MACOSX/train/._history.parquet
+Data/Small/__MACOSX/validation/._behaviors.parquet
+Data/Small/__MACOSX/validation/._history.parquet
+Data/Small/train/behaviors.parquet
+Data/Small/train/history.parquet
+Data/Small/validation/behaviors.parquet
+Data/Small/validation/history.parquet
