@@ -1,0 +1,25 @@
+.ipynb_checkpoints/2024_Recsys_Challenge_EDA-checkpoint.ipynb
+Data/ebnerd_demo.zip
+Data/ebnerd_large.zip
+Data/ebnerd_small.zip
+Data/ebnerd_testset.zip
+Data/Large/articles.parquet
+Data/Large/__MACOSX/._articles.parquet
+Data/Large/__MACOSX/._train
+Data/Large/__MACOSX/._validation
+Data/Large/__MACOSX/train/._.DS_Store
+Data/Large/__MACOSX/train/._behaviors.parquet
+Data/Large/__MACOSX/train/._history.parquet
+Data/Large/__MACOSX/validation/._.DS_Store
+Data/Large/__MACOSX/validation/._behaviors.parquet
+Data/Large/__MACOSX/validation/._history.parquet
+Data/Large/train/.DS_Store
+Data/Large/train/behaviors.parquet
+Data/Large/train/history.parquet
+Data/Large/validation/.DS_Store
+Data/Large/validation/behaviors.parquet
+Data/Large/validation/history.parquet
+Data/Test set/ebnerd_testset/.DS_Store
+Data/Test set/ebnerd_testset/articles.parquet
+Data/Test set/ebnerd_testset/test/behaviors.parquet
+Data/Test set/ebnerd_testset/test/history.parquet
