@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\sulma\Downloads\Datasets\2024 Recsys Challenge\.venv"
+VIRTUAL_ENV="c:\Users\sulma\Downloads\Datasets\2024 Recsys Challenge\.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
