@@ -552,3 +552,7 @@ cython_debug/
 .venv/Lib/site-packages/pip/_vendor/urllib3/util/__pycache__/timeout.cpython-311.pyc
 .venv/Lib/site-packages/pip/_vendor/urllib3/util/__pycache__/url.cpython-311.pyc
 .venv/Lib/site-packages/pip/_vendor/urllib3/util/__pycache__/wait.cpython-311.pyc
+/notebooks/Data/Small
+/fuxcitr_dir/data/test
+/fuxcitr_dir/data/train
+/fuxcitr_dir/data/validation
