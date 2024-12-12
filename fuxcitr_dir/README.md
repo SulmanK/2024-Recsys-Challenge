@@ -78,18 +78,6 @@ source activate fuxictr
     python submit.py --config config/DIN_ebnerd_large_x1_tuner_config_01 --expid DIN_ebnerd_large_x1_001_1860e41e --gpu 1
     ```
 
-3. Make a submission. We get test AUC: 0.7154.
+3. Make a submission. 
 
-    <div align="left">
-        <img width="99%" src="./img/submit_v1.png">
-    </div>
 
-### Potential Improvements
-
-+ To build the baseline, we simply reuse the DIN model, which is popular for sequential user interest modeling. We encourage to explore some other alternatives for user behavior sequence modeling.
-+ We currently only consider the click behaviors, but leave out other important singnals of reading times and percentiles. It is desired to consider them with multi-objective modeling.
-+ We use contrast vectors and image embeddings in a straightforward way. It is interesting to explore other embedding features.
-+ How to bridge the user sequence modeling with large pretrained models (e.g., Bert, LLMs) is a promising direction to explore.
-
-### Discussion
-We also welcome contributors to help improve the space and time efficiency of FuxiCTR for handling large-scale sequence datasets. If you have any question, please feel free to open an issue.
