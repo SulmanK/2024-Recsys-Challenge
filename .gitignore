@@ -556,3 +556,5 @@ cython_debug/
 /fuxcitr_dir/data/test
 /fuxcitr_dir/data/train
 /fuxcitr_dir/data/validation
+/fuxcitr_dir/data/contrastive_vector.parquet
+/fuxcitr_dir/data/image_embeddings.parquet
