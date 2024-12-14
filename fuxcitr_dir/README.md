@@ -11,18 +11,16 @@ This baseline is built on top of [FuxiCTR](https://github.com/reczoo/FuxiCTR), a
 + Jieming Zhu, Jinyang Liu, Shuai Yang, Qi Zhang, Xiuqiang He. [Open Benchmarking for Click-Through Rate Prediction](https://arxiv.org/abs/2009.05794). *The 30th ACM International Conference on Information and Knowledge Management (CIKM)*, 2021.
 
 
-### Data Preparation
+---
 
-Note that the dataset is quite large. Preparing the full dataset needs about 1T disk space. Although some optimizations can be made to save space (e.g., store sequence features sperately), we leave it for future exploration.
+## Usage
 
 1. Download the datasets at: https://recsys.eb.dk/#dataset
 
 2. Unzip the data files to the following
 
     ```bash
-    cd ~/RecSys2024_CTR_Challenge/data/Ebnerd/
-    find -L .
-
+    cd ~/2024-Recsys-Challenge/fuxcitr_dir/data/
     .
     ./train
     ./train/history.parquet
@@ -38,46 +36,24 @@ Note that the dataset is quite large. Preparing the full dataset needs about 1T 
     ./image_embeddings.parquet
     ./contrastive_vector.parquet
     ./prepare_data_v1.py
+    ./prepare_data_v2.py
     ```
 
 3. Convert the data to csv format
 
     ```bash
-    cd ~/RecSys2024_CTR_Challenge/data/Ebnerd/
+    cd ~/2024-Recsys-Challenge/fuxcitr_dir/data/
     python prepare_data_v1.py
     ```
-
-### Environment
-
-Please set up the environment as follows. We run the experiments on a P100 GPU server with 16G GPU memory and 750G RAM.
-
-+ torch==1.10.2+cu113
-+ fuxictr==2.2.3
-
-```
-conda create -n fuxictr python==3.9
-pip install -r requirements.txt
-source activate fuxictr
-```
-
-### Version 1
-
-1. Train the model on train and validation sets:
-
-    ```
+4. Model training
+    ```bash
     python run_param_tuner.py --config config/DIN_ebnerd_large_x1_tuner_config_01.yaml --gpu 0
     ```
-
-    We get validation avgAUC: 0.7113. Note that in FuxiCTR, AUC is the global AUC, while avgAUC is averaged over impression ID groups.
-
-2. Make predictions on the test set:
-
-    Get the experiment_id from running logs or the result csv file, and then you can run prediction on the test.
-
-    ```
+5. Predictions
+    ```bash
     python submit.py --config config/DIN_ebnerd_large_x1_tuner_config_01 --expid DIN_ebnerd_large_x1_001_1860e41e --gpu 1
     ```
 
-3. Make a submission. 
+---
 
 

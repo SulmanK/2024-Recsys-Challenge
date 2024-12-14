@@ -10,20 +10,26 @@ This repository contains the implementation, configuration, and experiments for 
 This repository contains the following directories and files:
 
 ```plaintext
-├── config/             # Configuration files for the project
-├── data/               # Datasets used in the project
-│   ├── raw/            # Raw datasets before preprocessing
-│   ├── processed/      # Cleaned and processed datasets
-├── docs/               # Documentation, including user guides and design notes
-├── experiments/        # Scripts and notebooks for experimental runs
-├── models/             # Saved models and checkpoints
-├── notebooks/          # Jupyter notebooks for exploratory data analysis (EDA) / modeling
-├── scripts/            # Python scripts for data preprocessing, training, etc.
-├── tests/              # Unit and integration test scripts
-├── results/            # Output of experiments (e.g., metrics, plots)
-├── requirements.txt    # Dependencies required for the project
-├── README.md           # Overview of the repository (this file)
-└── LICENSE             # Licensing information for the repository
+
+├── notebooks/                  # Jupyter notebooks for exploratory data analysis (EDA) / modeling
+|── requirements.txt            # Dependencies required for the project
+├── README.md                   # Overview of the repository (this file)
+├── fuxcitr_dir/                # Configurable, tunable, and preoducible library for CTR prediction
+    ├── config/                 # Configuration files for the project
+    ├── data/                   # Datasets used in the project
+       ├── train/               # Training set
+       ├── validation/          # Validation set
+       ├── testing/             # Testing set
+       ├── processed/           # Cleaned and processed datasets
+       |── prepare_data_v1.py   # Data preprocessing. (V1 - smaller subset of data)
+       |── prepare_data_v2.py   # Data preprocessing. (V2 - larger subset of data)
+    ├── exp_results/            # Output of experiments (e.g., metrics, plots)
+    ├── src/                    # ML model (DIN)
+       ├── din.py               # Deep Interest Neural Network model
+├── run_expid.py                # Logs the experiment run
+├── run_param_tuner.py          # Extracts the model and data configs and trains and validates the model
+├── submit.py                   # Makes predictions on the testing set
+└── LICENSE                     # Licensing information for the repository
 ```
 
 ---
@@ -51,26 +57,48 @@ Follow these steps to set up the project:
    pip install -r requirements.txt
    ```
 
-4. **Run Tests (Optional)**
-   Validate the installation by running the tests:
-   ```bash
-   python -m unittest discover tests/
-   ```
-
 ---
 
 ## Usage
 
-- **Configuration**: Modify the YAML files in the `config/` directory to set up experiments.
-- **Data**: Place raw datasets in the `data/raw/` directory. Processed datasets will be saved to `data/processed/`.
-- **Training**: Use the provided scripts to train models. For example:
-  ```bash
-  python scripts/train_model.py --config config/DIN_ebnerd_large_x2.yaml
-  ```
-- **Evaluation**: Generate evaluation metrics by running:
-  ```bash
-  python scripts/evaluate_model.py --config config/DIN_ebnerd_large_x2.yaml
-  ```
+1. Download the datasets at: https://recsys.eb.dk/#dataset
+
+2. Unzip the data files to the following
+
+    ```bash
+    cd ~/2024-Recsys-Challenge/fuxcitr_dir/data/
+    .
+    ./train
+    ./train/history.parquet
+    ./train/articles.parquet
+    ./train/behaviors.parquet
+    ./validation
+    ./validation/history.parquet
+    ./validation/behaviors.parquet
+    ./test
+    ./test/history.parquet
+    ./test/articles.parquet
+    ./test/behaviors.parquet
+    ./image_embeddings.parquet
+    ./contrastive_vector.parquet
+    ./prepare_data_v1.py
+    ./prepare_data_v2.py
+    ```
+
+3. Convert the data to csv format
+
+    ```bash
+    cd ~/2024-Recsys-Challenge/fuxcitr_dir/data/
+    python prepare_data_v1.py
+    ```
+4. Model training
+    ```bash
+    python run_param_tuner.py --config config/DIN_ebnerd_large_x1_tuner_config_01.yaml --gpu 0
+    ```
+5. Predictions
+    ```bash
+    python submit.py --config config/DIN_ebnerd_large_x1_tuner_config_01 --expid DIN_ebnerd_large_x1_001_1860e41e --gpu 1
+    ```
 
 ---
 
