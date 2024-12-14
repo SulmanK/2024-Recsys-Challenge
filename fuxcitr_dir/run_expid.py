@@ -15,7 +15,19 @@
 # =========================================================================
 
 
+import sys
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+fuxictr_dir = os.getenv('FUICR_DIR')
+
+# Use fuxictr_dir in your script
+sys.path.append(fuxictr_dir)
+
+import fuxictr
+
+
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 import sys
 import logging
@@ -73,10 +85,19 @@ if __name__ == '__main__':
     del train_gen, valid_gen
     gc.collect()
     
+
+    # Ensure the 'exp_results' directory exists
+    result_dir = "exp_results"
+    os.makedirs(result_dir, exist_ok=True)
+
+    # Dynamically generate the result filename based on the config name
+    config_name = Path(args['config']).name.replace(".yaml", "")  
+    result_filename = os.path.join(result_dir, f"{config_name}.csv")  
+
+    # Example write operation
     test_result = {}
-    result_filename = Path(args['config']).name.replace(".yaml", "") + '.csv'
     with open(result_filename, 'a+') as fw:
         fw.write(' {},[command] python {},[exp_id] {},[dataset_id] {},[train] {},[val] {},[test] {}\n' \
-            .format(datetime.now().strftime('%Y%m%d-%H%M%S'), 
-                    ' '.join(sys.argv), experiment_id, params['dataset_id'],
-                    "N.A.", print_to_list(valid_result), print_to_list(test_result)))
+                .format(datetime.now().strftime('%Y%m%d-%H%M%S'), 
+                        ' '.join(sys.argv), experiment_id, params['dataset_id'],
+                        "N.A.", print_to_list(valid_result), print_to_list(test_result)))

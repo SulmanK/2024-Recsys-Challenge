@@ -27,7 +27,7 @@ import gc
 train_path = "./train/"
 dev_path = "./validation/"
 test_path = "./test/"
-dataset_version = "Ebnerd_large_x1"
+dataset_version = "Ebnerd_large_x2"
 image_emb_path = "image_embeddings.parquet"
 contrast_emb_path = "contrastive_vector.parquet"
 MAX_SEQ_LEN = 50
@@ -137,23 +137,28 @@ def join_data(data_path):
         )
         .drop(["impression_time", "published_time", "last_modified_time"])
     )
+    sample_df = (
+        sample_df.with_columns(
+            ((pl.col("read_time") - sample_df['read_time'].mean()) / sample_df['read_time'].std())
+        )
+    )
     print(sample_df.columns)
     return sample_df
 
-train_df = join_data(train_path)[:50000]
+train_df = join_data(train_path)[:100000]
 print(train_df.head())
 print("Train samples", train_df.shape)
 train_df.write_csv(f"./{dataset_version}/train.csv")
 del train_df
 
-valid_df = join_data(dev_path)[:50000]
+valid_df = join_data(dev_path)[:100000]
 print(valid_df.head())
 print("Validation samples", valid_df.shape)
 valid_df.write_csv(f"./{dataset_version}/valid.csv")
 del valid_df
 gc.collect()
 
-test_df = join_data(dev_path)[:50000]
+test_df = join_data(dev_path)[:100000]
 print(test_df.head())
 print("Test samples", test_df.shape)
 test_df.write_csv(f"./{dataset_version}/test.csv")

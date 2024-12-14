@@ -14,6 +14,11 @@
 # limitations under the License.
 # =========================================================================
 
+import sys
+sys.path.insert(0, '/path/to/fuxictr')
+import fuxictr
+
+
 from datetime import datetime
 import gc
 import argparse
