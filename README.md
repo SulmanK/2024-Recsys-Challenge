@@ -56,6 +56,11 @@ Follow these steps to set up the project:
    ```bash
    pip install -r requirements.txt
    ```
+4. **Create environmental variables**
+   Setup a path to the FUXICTR library
+   ```
+   FUICR_DIR="~\\2024 Recsys Challenge\\venv\\Lib\\site-packages"
+   ```
 
 ---
 
