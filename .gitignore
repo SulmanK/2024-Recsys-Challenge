@@ -559,3 +559,4 @@ cython_debug/
 /fuxcitr_dir/data/contrastive_vector.parquet
 /fuxcitr_dir/data/image_embeddings.parquet
 /fuxcitr_dir/exp_results
+/fuxcitr_dir/exp_results/DIN_ebnerd_large_x1_tuner_config_01.csv
