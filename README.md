@@ -23,13 +23,13 @@ This repository contains the following directories and files:
        ├── processed/           # Cleaned and processed datasets
        |── prepare_data_v1.py   # Data preprocessing. (V1 - smaller subset of data)
        |── prepare_data_v2.py   # Data preprocessing. (V2 - larger subset of data)
+    └── LICENSE                     # Licensing information for the repository
     ├── exp_results/            # Output of experiments (e.g., metrics, plots)
     ├── src/                    # ML model (DIN)
        ├── din.py               # Deep Interest Neural Network model
 ├── run_expid.py                # Logs the experiment run
 ├── run_param_tuner.py          # Extracts the model and data configs and trains and validates the model
 ├── submit.py                   # Makes predictions on the testing set
-└── LICENSE                     # Licensing information for the repository
 ```
 
 ---
