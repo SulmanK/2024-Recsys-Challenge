@@ -1,0 +1,1 @@
+ 20241214-030553,[command] python run_expid.py --config config/DIN_ebnerd_large_x2_tuner_config_04 --expid DIN_ebnerd_large_x2_001_2f9944db --gpu 0,[exp_id] DIN_ebnerd_large_x2_001_2f9944db,[dataset_id] ebnerd_large_x2_c5b89fb2,[train] N.A.,[val] avgAUC: 0.668542 - MRR: 0.435974 - NDCG(k=5): 0.493952,[test] 
