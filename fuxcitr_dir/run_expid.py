@@ -78,6 +78,10 @@ if __name__ == '__main__':
     model.count_parameters() # print number of parameters used in model
 
     train_gen, valid_gen = RankDataLoader(feature_map, stage='train', **params).make_iterator()
+
+    print(train_gen)
+
+
     model.fit(train_gen, validation_data=valid_gen, **params)
 
     logging.info('****** Validation evaluation ******')

@@ -1,0 +1,67 @@
+ebnerd_large_x2_7ea969aa:
+    data_block_size: 100000
+    data_format: csv
+    data_root: ./data/
+    feature_cols:
+    - {active: true, dtype: int, name: impression_id, remap: false, type: meta}
+    - {active: true, dtype: float, fill_na: 0, name: read_time, type: numeric}
+    - {active: true, dtype: str, name: user_id, type: categorical}
+    - {active: true, dtype: str, name: article_id, type: categorical}
+    - {active: true, dtype: str, name: trigger_id, type: categorical}
+    - {active: true, dtype: str, name: device_type, type: categorical}
+    - {active: true, dtype: str, name: is_sso_user, type: categorical}
+    - {active: true, dtype: str, name: gender, type: categorical}
+    - {active: true, dtype: str, name: postcode, type: categorical}
+    - {active: true, dtype: str, name: age, type: categorical}
+    - {active: true, dtype: str, name: is_subscriber, type: categorical}
+    - {active: true, dtype: str, name: premium, type: categorical}
+    - {active: true, dtype: str, name: article_type, type: categorical}
+    - {active: true, dtype: str, max_len: 5, name: ner_clusters, padding: pre, splitter: ^,
+        type: sequence}
+    - {active: true, dtype: str, max_len: 5, name: topics, padding: pre, splitter: ^,
+        type: sequence}
+    - {active: true, dtype: str, name: category, type: categorical}
+    - {active: true, dtype: str, max_len: 5, name: subcategory, padding: pre, splitter: ^,
+        type: sequence}
+    - {active: false, dtype: float, fill_na: 0, name: total_inviews, type: numeric}
+    - {active: false, dtype: float, fill_na: 0, name: total_pageviews, type: numeric}
+    - {active: false, dtype: float, fill_na: 0, name: total_read_time, type: numeric}
+    - {active: false, dtype: float, fill_na: 0, name: sentiment_score, type: numeric}
+    - {active: true, dtype: str, name: sentiment_label, type: categorical}
+    - {active: true, dtype: str, name: subcat1, type: categorical}
+    - {active: true, dtype: str, max_len: 50, name: hist_id, padding: pre, share_embedding: article_id,
+        splitter: ^, type: sequence}
+    - {active: true, dtype: str, max_len: 50, name: hist_cat, padding: pre, share_embedding: category,
+        splitter: ^, type: sequence}
+    - {active: true, dtype: str, max_len: 50, name: hist_subcat1, padding: pre, share_embedding: subcat1,
+        splitter: ^, type: sequence}
+    - {active: true, dtype: str, max_len: 50, name: hist_sentiment, padding: pre,
+        share_embedding: sentiment_label, splitter: ^, type: sequence}
+    - {active: true, dtype: str, max_len: 50, name: hist_type, padding: pre, share_embedding: article_type,
+        splitter: ^, type: sequence}
+    - {active: true, dtype: str, name: publish_days, type: categorical}
+    - {active: true, dtype: str, name: publish_hours, type: categorical}
+    - {active: true, dtype: str, name: impression_hour, type: categorical}
+    - {active: true, dtype: str, name: impression_weekday, type: categorical}
+    - {active: true, dtype: str, name: pulish_3day, type: categorical}
+    - {active: true, dtype: str, name: pulish_7day, type: categorical}
+    - {active: true, dtype: str, freeze_emb: true, min_categr_count: 1, name: article_id_img,
+        preprocess: copy_from(article_id), pretrain_dim: 64, pretrain_usage: init,
+        pretrained_emb: ./data/Ebnerd_large_x1/image_emb_dim64.npz, type: categorical}
+    - {active: true, dtype: str, freeze_emb: true, min_categr_count: 1, name: article_id_text,
+        preprocess: copy_from(article_id), pretrain_dim: 64, pretrain_usage: init,
+        pretrained_emb: ./data/Ebnerd_large_x1/contrast_emb_dim64.npz, type: categorical}
+    - {active: true, dtype: str, freeze_emb: true, max_len: 50, min_categr_count: 1,
+        name: hist_id_img, padding: pre, preprocess: copy_from(hist_id), pretrain_dim: 64,
+        pretrain_usage: init, pretrained_emb: ./data/Ebnerd_large_x1/image_emb_dim64.npz,
+        share_embedding: article_id_img, splitter: ^, type: sequence}
+    - {active: true, dtype: str, freeze_emb: true, max_len: 50, min_categr_count: 1,
+        name: hist_id_text, padding: pre, preprocess: copy_from(hist_id), pretrain_dim: 64,
+        pretrain_usage: init, pretrained_emb: ./data/Ebnerd_large_x1/contrast_emb_dim64.npz,
+        share_embedding: article_id_text, splitter: ^, type: sequence}
+    label_col: {dtype: float, name: click}
+    min_categr_count: 10
+    streaming: true
+    test_data: ./data//Ebnerd_large_x2/test.csv
+    train_data: ./data/Ebnerd_large_x2/train.csv
+    valid_data: ./data/Ebnerd_large_x2/valid.csv

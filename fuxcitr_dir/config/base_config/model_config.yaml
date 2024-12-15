@@ -97,3 +97,103 @@ DIN_default: # This is a config template
     monitor: {'AUC': 1, 'logloss': -1}
     monitor_mode: 'max'
 
+DIN_doubleq:
+    attention_dropout: 0.2
+    attention_hidden_activations: ReLU
+    attention_hidden_units: [512, 256]
+    attention_output_activation: null
+    batch_norm: true
+    batch_size: 7168
+    dataset_id: TBD
+    debug_mode: false
+    din_sequence_field: click_history
+    din_target_field: item_id
+    din_use_softmax: false
+    dnn_activations: ReLU
+    dnn_hidden_units: [1024, 512, 256]
+    early_stop_patience: 2
+    embedding_dim: 64
+    embedding_regularizer: 0.0001
+    epochs: 10
+    eval_steps: null
+    feature_config: null
+    feature_specs: null
+    group_id: impression_id
+    item_info_fields: 12
+    learning_rate: 0.0005
+    loss: binary_crossentropy
+    metrics: [avgAUC, AUC, logloss]
+    model: DIN
+    model_root: ./checkpoints/
+    monitor: avgAUC
+    monitor_mode: max
+    net_dropout: 0.1
+    net_regularizer: 0
+    num_workers: 3
+    optimizer: adam
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 20242025
+    shuffle: true
+    task: binary_classification
+    use_features: null
+    verbose: 1
+
+DCN_default: # This is a config template
+    model: DCN
+    dataset_id: TBD
+    loss: 'binary_crossentropy'
+    metrics: ['logloss', 'AUC']
+    task: binary_classification
+    optimizer: adam
+    learning_rate: 1.0e-3
+    embedding_regularizer: 0
+    net_regularizer: 0
+    batch_size: 10000
+    embedding_dim: 32
+    dnn_hidden_units: [1024, 512, 256]
+    dnn_activations: relu
+    num_cross_layers: 3
+    net_dropout: 0
+    batch_norm: False
+    epochs: 10
+    shuffle: True
+    seed: 20222023
+    monitor: {'AUC': 1, 'logloss': -1}
+    monitor_mode: 'max'
+
+DCN_doubleq:
+    batch_norm: true
+    batch_size: 7168
+    dataset_id: Ebnerd_large_data
+    debug_mode: false
+    dnn_activations: ReLU
+    dnn_hidden_units: [1024, 512, 256]
+    early_stop_patience: 2
+    embedding_dim: 64
+    embedding_regularizer: 1.0e-05
+    epochs: 10
+    eval_steps: null
+    feature_config: null
+    feature_specs: null
+    group_id: impression_id
+    item_info_fields: 12
+    learning_rate: 0.0005
+    loss: binary_crossentropy
+    metrics: [avgAUC, AUC, logloss]
+    model: DCN
+    model_root: ./checkpoints/
+    monitor: avgAUC
+    monitor_mode: max
+    net_dropout: 0.1
+    net_regularizer: 0
+    num_cross_layers: 3
+    num_workers: 3
+    optimizer: adam
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 20242025
+    shuffle: true
+    task: binary_classification
+    use_features: null
+    verbose: 1

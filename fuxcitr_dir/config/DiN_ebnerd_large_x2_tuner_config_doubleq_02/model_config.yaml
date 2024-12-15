@@ -1,0 +1,57 @@
+DIN_ebnerd_large_x2_001_3e89b3ec:
+    attention_dropout: 0.2
+    attention_hidden_activations: ReLU
+    attention_hidden_units: [512, 256]
+    attention_output_activation: null
+    batch_norm: false
+    batch_size: 8192
+    dataset_id: ebnerd_large_x2_7ea969aa
+    debug_mode: false
+    din_sequence_field:
+    - !!python/tuple [hist_id, hist_cat, hist_subcat1, hist_sentiment, hist_type]
+    - !!python/tuple [hist_id_img, hist_id_text]
+    din_target_field:
+    - !!python/tuple [article_id, category, subcat1, sentiment_label, article_type]
+    - !!python/tuple [article_id_img, article_id_text]
+    din_use_softmax: false
+    dnn_activations: ReLU
+    dnn_hidden_units: [1024, 512, 256]
+    early_stop_patience: 2
+    embedding_dim: 64
+    embedding_regularizer: 0.0001
+    epochs: 10
+    eval_steps: null
+    feature_config: null
+    feature_specs:
+    - {feature_encoder: null, name: hist_id}
+    - {feature_encoder: null, name: hist_cat}
+    - {feature_encoder: null, name: hist_subcat1}
+    - {feature_encoder: null, name: hist_sentiment}
+    - {feature_encoder: null, name: hist_type}
+    - {feature_encoder: 'nn.Linear(64, 64, bias=False)', name: hist_id_img}
+    -   feature_encoder: ['nn.Linear(64, 64, bias=False)']
+        name: hist_id_text
+    -   feature_encoder: ['nn.Linear(64, 64, bias=False)']
+        name: article_id_img
+    -   feature_encoder: ['nn.Linear(64, 64, bias=False)']
+        name: article_id_text
+    group_id: impression_id
+    item_info_fields: 12
+    learning_rate: 0.001
+    loss: binary_crossentropy
+    metrics: [avgAUC, MRR, NDCG(k=5)]
+    model: DIN
+    model_root: ./checkpoints/
+    monitor: avgAUC
+    monitor_mode: max
+    net_dropout: 0.1
+    net_regularizer: 0
+    num_workers: 3
+    optimizer: adam
+    pickle_feature_encoder: true
+    save_best_only: true
+    seed: 20242025
+    shuffle: true
+    task: binary_classification
+    use_features: null
+    verbose: 1
