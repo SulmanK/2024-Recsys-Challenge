@@ -10,7 +10,7 @@ This baseline is built on top of [FuxiCTR](https://github.com/reczoo/FuxiCTR), a
 
 + Jieming Zhu, Jinyang Liu, Shuai Yang, Qi Zhang, Xiuqiang He. [Open Benchmarking for Click-Through Rate Prediction](https://arxiv.org/abs/2009.05794). *The 30th ACM International Conference on Information and Knowledge Management (CIKM)*, 2021.
 
-This repository is adapted from the official [Github Repository](https://github.com/reczoo/RecSys2024_CTR_Challenge) provided as a baseline for the competition. Significant modifications have been implemented to enhance the model, focusing on improving dataset preprocessing and refining feature selection for more effective training.
+This repository is adapted from the official [Github Repository](https://github.com/reczoo/RecSys2024_CTR_Challenge) provided as a baseline for the competition. Significant modifications have been implemented to enhance the model performance, focusing on improving dataset preprocessing and refining feature selection for more effective training.
 
 ---
 
